@@ -1,0 +1,9 @@
+sudo: required
+services: #Travis CI will install a copy of Docker inside the container
+  - docker
+
+before_install:
+  - docker build -t ananth/docker-react -f Dockerfile.dev . #will get back the ID at the end of this command
+
+script:
+  - docker run ananth/docker-react npm run test -- --coverage
